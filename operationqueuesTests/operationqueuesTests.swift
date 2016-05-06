@@ -47,16 +47,7 @@ class operationqueuesTests: XCTestCase {
      This test print the default initial values associated with a synchronous operation
      */
     func testDefaultInitialValuesSYNCOperation() {
-        print("Operation Name: \(syncOperation1?.name)")
-        print(" isCancelled?: \(syncOperation1?.cancelled)")
-        print(" isExecuting?: \(syncOperation1?.executing)")
-        print(" isFinished?: \(syncOperation1?.finished)")
-        print(" isReady?: \(syncOperation1?.ready)")
-        print(" isAsynchronous?: \(syncOperation1?.asynchronous)")
-        print(" Dependencies: \(syncOperation1?.dependencies)")
-        print(" Priority: \(syncOperation1?.queuePriority)")
-        print(" Quality of Services: \(syncOperation1?.qualityOfService)")
-        
+        printOperation(syncOperation1!)
         XCTAssertNotNil(syncOperation1)
     }
 
@@ -64,10 +55,16 @@ class operationqueuesTests: XCTestCase {
      This test print the default initial values associated with a asynchronous operation
      */
     func testDefaultInitialValuesASYNCOperation() {
+        printOperation(asyncOperation1!)
         XCTAssertNotNil(asyncOperation1)
     }
     
-    func testAsynchSingleOperation() {
+    /**
+     Enqueue an asynchronous operation in a queue.
+     We can debug here and see that the effect is the same as scheduling a synch operation.
+     Queues always execute the ops on a different thread.
+    */
+    func testAsynchSingleOperationInQueue() {
         let expectation = expectationWithDescription("Asynch operation execution should finish")
         
         asyncOperation1?.completionBlock = { [weak asyncOperation1] in
@@ -87,7 +84,11 @@ class operationqueuesTests: XCTestCase {
         }
     }
     
-    func testAsynch2OperationsMaxConcurrency2() {
+    /**
+     Schedule 2 operations on a queue with max concurrency set to 2.
+     This is a simple test to check both are run on separate threads.
+     */
+    func test2OperationsMaxConcurrency2() {
         let expectation1 = expectationWithDescription("Asynch operation 1 execution should finish")
         let expectation2 = expectationWithDescription("Asynch operation 2 execution should finish")
         
@@ -115,11 +116,38 @@ class operationqueuesTests: XCTestCase {
             }
         }
     }
+    
+    /**
+     Here we should see no more than 3 operations are running concurrently at the same time
+     */
+    func testMaxConcurrency3AndSeveralOpsScheduled() {
+        //TODO
+    }
+    
+    /**
+     Here we should observe only 1 operation is executed in a particular moment
+     */
+    func testMaxConcurrency1AndSeveralOpsScheduled() {
+    }
 
     func testPerformanceExample() {
         self.measureBlock {
             //TODO complete
         }
+    }
+    
+    // MARK: private
+    
+    func printOperation(op: NSOperation) {
+        print("Operation Name: \(op.name)")
+        print(" isCancelled?: \(op.cancelled)")
+        print(" isExecuting?: \(op.executing)")
+        print(" isFinished?: \(op.finished)")
+        print(" isReady?: \(op.ready)")
+        print(" isAsynchronous?: \(op.asynchronous)")
+        print(" Dependencies: \(op.dependencies)")
+        print(" Priority: \(op.queuePriority)")
+        print(" Quality of Services: \(op.qualityOfService)")
     }
     
 }
