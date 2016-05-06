@@ -180,7 +180,7 @@ Defines the priority with which an operation will access system resources, once 
 - An operation can have quealityOfService too.  
 - The operation quality of service has priority over the queue qos.  
 - The queue qos will be apply as default to all the operations that do not have an explicit value.  
-- 
+
 <p align=center>
 <img src="https://github.com/barbaramartina/swift-operation-queues/blob/master/resources/10%20-%20qualityOfService%20on%20queues.png" width=500>
 </p>  
