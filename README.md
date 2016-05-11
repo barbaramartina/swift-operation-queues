@@ -18,7 +18,7 @@ With links to concrete **Apple** documentation included in the code for quick re
 
 ## Queues  
 
-[NSOperationQueue](https://developer.apple.com/library/mac/documentation/Cocoa/Reference/NSOperationQueue_class/) is the container class in charge of handling operations, sending them to be executed, prioritazing the execution order, handling the threads to which every operation is assigned or using [GCD](https://developer.apple.com/library/ios/documentation/Performance/Reference/GCD_libdispatch_Ref/).  
+[NSOperationQueue](https://developer.apple.com/library/mac/documentation/Cocoa/Reference/NSOperationQueue_class/) is the container class in charge of handling operations, sending them to be executed, prioritizing the execution order, handling the threads to which every operation is assigned or using [GCD](https://developer.apple.com/library/ios/documentation/Performance/Reference/GCD_libdispatch_Ref/).  
 
 
 ## Operation dependencies  
@@ -111,7 +111,7 @@ An operation could be in any of the following states.
 
 ## Operation cancellation
 
-You can cancell an operation when it's in the queue, or when it's executing.  
+You can cancel an operation when it's in the queue, or when it's executing.  
 Do not believe it will be automatically stopped, because calling cancel has some other implications.  
 
 [Checkout cancellation documentation for more details.](https://developer.apple.com/library/mac/documentation/Cocoa/Reference/NSOperation_class/#//apple_ref/doc/uid/TP40004591-RH2-SW24)  
