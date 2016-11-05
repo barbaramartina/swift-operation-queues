@@ -1,9 +1,9 @@
 # Operation Queues in Swift
+## This repo is based in Swift 2.3 many changes have been added to Swift 3 and a simplified and beautiful sintax is in place now to be used for Operations and GCD.
 
 A project to show how operations (both asynch and synch) can be implemented in [Swift](https://swift.org/).  
 With links to concrete **Apple** documentation included in the code for quick references.  
 
-:soon: more unit tests (in progress).  
 
 ## Operations
 
